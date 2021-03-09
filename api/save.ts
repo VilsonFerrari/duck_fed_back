@@ -6,7 +6,9 @@ import QueryRepositoryImpl from '../query_builder/infra/repositories/query_repos
 const Save = async ({ body }: Request, res: Response) => {
     const q = new QueryRepositoryImpl(knex)
     q.table('fed')
-    if(q.save(body)) {
+    let save = await q.save(body)
+    
+    if(save) {
         res.send(true)
     } else {
         res.send(false)

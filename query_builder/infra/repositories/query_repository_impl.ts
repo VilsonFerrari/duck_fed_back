@@ -85,7 +85,7 @@ export default class QueryRepositoryImpl implements QueryRepository {
         return await q;
     }
 
-    async save(values: any): Promise<void> {
-        return await this.datasource(this._table).insert(values)
+    async save(values: any): Promise<boolean> {
+        return Boolean(await this.datasource(this._table).insert(values))
     }
 }
