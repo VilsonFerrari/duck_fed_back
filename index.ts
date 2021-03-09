@@ -1,6 +1,6 @@
 import app from './config/app'
-import Get from './endpoints/get'
-import Save from './endpoints/save'
+import Get from './api/get'
+import Save from './api/save'
 const port = app.get('port')
 
 app.get('/reports', Get)
