@@ -4,7 +4,6 @@ const connData = {
     database: process.env.APP_DB_NAME || 'freshworks_selection_test',
     user: process.env.APP_DB_USER || 'root',
     password: process.env.APP_DB_PASSWORD || 'toor',
-    ssl: true,
 }
 
 export default {
