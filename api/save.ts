@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import allowCors from '../config/cors'
 import knex from '../config/db'
 import QueryRepositoryImpl from '../query_builder/infra/repositories/query_repository_impl'
 
@@ -12,4 +13,4 @@ const Save = async ({ body }: Request, res: Response) => {
     }
 }
 
-export default Save
+export default allowCors(Save)

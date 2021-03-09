@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import allowCors from '../config/cors'
 import knex from '../config/db'
 import QueryRepositoryImpl from '../query_builder/infra/repositories/query_repository_impl'
 
@@ -38,4 +39,4 @@ const Get = async ({ query }: Request, res: Response) => {
     
 }
 
-export default Get
+export default allowCors(Get)
