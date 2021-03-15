@@ -1,12 +1,10 @@
 {
     "compilerOptions": {
         "target": "es6",
-        "module": "esnext",
-        "moduleResolution": "node",
+        "module": "commonjs",
         "rootDir": "./",
         "outDir": "./api",
         "esModuleInterop": true,
-        "strict": true,
-        "allowJs": true
+        "strict": true
     }
 }
