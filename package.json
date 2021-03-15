@@ -10,7 +10,10 @@
     "migrate": "knex migrate:up",
     "migrate:make": "knex migrate:make -x ts",
     "migrate:full": "knex migrate:down && knex migrate:up && knex seed:run",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "yarn test --watch",
+    "test:staged": "yarn test --findrelatedTests",
+    "test:ci": "yarn test --coverage"
   },
   "keywords": [],
   "author": "Vilson Ferrari",
@@ -25,10 +28,13 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.11",
+    "@types/faker": "^5.1.7",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.32",
+    "faker": "^5.4.0",
     "jest": "^26.6.3",
     "nodemon": "^2.0.7",
+    "ts-jest": "^26.5.3",
     "ts-mockito": "^2.6.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
