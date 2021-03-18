@@ -5,7 +5,7 @@ import { DbClient } from "../../db/client";
 export class SaveReportImpl implements SaveReport {
     constructor(
         private readonly table: string,
-        private readonly dbClient: DbClient<boolean>
+        private readonly dbClient: DbClient
     ) {}
 
     async save(fields: SaveReport.Fields): Promise<boolean> {

@@ -1,5 +1,3 @@
-import { ReportModel } from "../models/report_model"
-
 export interface SaveReport {
     save: (fields: SaveReport.Fields) => Promise<boolean>
 }
@@ -14,5 +12,5 @@ export namespace SaveReport {
         feed_at: Date
     }
     
-    export type Model = ReportModel
+    export type Model = true
 }

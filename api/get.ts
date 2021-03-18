@@ -1,41 +1,19 @@
 import { Request, Response } from 'express'
 import allowCors from '../config/cors'
-import knex from '../config/db'
-import QueryRepositoryImpl from '../query_builder/infra/repositories/query_repository_impl'
+import { ListReportImpl } from '../data/usecases/list_report/list_report_impl'
+import { KnexDbClient } from '../infra/db/knex_db_client'
 
 const Get = async ({ query }: Request, res: Response) => {
-    const { p, limit, order } = query as any
+    const dbClient = new KnexDbClient();
+    const list = new ListReportImpl('fed', dbClient);
 
-    const q = new QueryRepositoryImpl(knex)
-    q.table('fed')
-
-    if(limit) {
-        q.limit(limit)
-    }
-
-    if(p) {
-        q.page(p)
-    }
-
-    if(order) {
-        const { table, direction } = JSON.parse(order)
-        q.order(table, direction)
-    }
-
-    let total = await q.count()
-    let val = await q.get()
-
-    // Test API delay
-    setTimeout(() => {
-        res.send({
-            page: p,
-            lastPage: Math.round(total / (q._limit || q._defaultLimit)),
-            total,
-            limit: q._limit,
-            offset: q._offset,
-            result: val
-        })
-    }, 1500);
+    const { limit, p, order } = query
+    let response = await list.list({
+        p: p as any as number, 
+        limit: limit as any as number, 
+        order: JSON.parse(order as any)
+    });
+    res.send(response);
     
 }
 
